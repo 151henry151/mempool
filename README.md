@@ -1,7 +1,12 @@
 # Bitcoin Mempool Statistics
 
 This is the code to create the mempool statistics for bitcoin that are online
-at https://jochen-hoenicke.de/queue/
+at https://romp.network/mempool/queue
+
+The original project was https://github.com/jhoenicke/mempool this, but I was unable to deploy it successfully as written. This version was created, with some little bit of help from me, but most of the work done by phogg. Thanks to phogg from #bash on freenode IRC for his volunteer labor.
+
+What we did is to replace mempool.sh, mkdata.sh, and updatedata.sh with one new script, which is titled replacementscript.bash
+
 
 ## Installation: Part 1 - Logging
 
@@ -15,9 +20,9 @@ his home directory:
 
     sudo -H -u mempool bash
     cd $HOME
-    git clone https://github.com/jhoenicke/mempool
+    git clone https://github.com/151henry151/mempool
 
-Edit `mempool.sh` to adapt paths as necessary, especially the path to 
+Edit `replacementscript.bash` to adapt paths as necessary, especially the path to 
 bitcoin-cli.  Add a bitcoin.conf with rpcuser/rpcpassword settings to 
 `/home/mempool/.bitcoin`, to be able to use bitcoin-cli.  You can test your
 setup by running
@@ -53,6 +58,8 @@ webserver should serve.  If everything looks fine add the following crontab
 entry (using `crontab -e`):
 
     * * * * * /home/mempool/mempool/mempool.sh 
+    
+Note that you will need to leave this running for 6 days to build a long enough `mempool.log` file for the initial values.
 
 ## Installation: Part 2 - Web service
 
