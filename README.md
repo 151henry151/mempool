@@ -49,7 +49,7 @@ webinterface won't work.
     EOF
     cd mempool
     perl mempool-create.pl | mysql btc_mempool
-    ./mempool.sh
+    ./replacementscript.bash
 
 You are almost ready now.  Check that everything works.  There should be a
 file `mempool.log` containing one line of statistics.  There should be
@@ -57,7 +57,7 @@ newly created files in `/dev/shm/mempool-btc` that contain the dynamic data the
 webserver should serve.  If everything looks fine add the following crontab 
 entry (using `crontab -e`):
 
-    * * * * * /home/mempool/mempool/mempool.sh 
+    * * * * * /home/mempool/mempool/replacementscript.bash 
     
 Note that you will need to leave this running for 6 days to build a long enough `mempool.log` file for the initial values.
 
