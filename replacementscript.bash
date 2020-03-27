@@ -141,7 +141,7 @@ updatedata () {
 	done
 
 	# all is different; the entire file gets replaced with just the line. Apparently
-	if [[ $(( minute_boundary % 360 )) -eq 0 ]] ; then
+	if (( (minute_boundary % 360) == 0 )); then
 		create-js all "$line"
 	fi
 }
