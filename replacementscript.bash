@@ -160,7 +160,7 @@ bitcoin-cli getrawmempool true > "$tmp"
 
 # internally appends to mempool.log
 python mempool_sql.py < "$tmp"
-
+rm -f "$tmp"
 # create ram-disk directory if it does not exists
 if ! [[ -e $DESTDIR ]] ; then
 	mkdir -p "$DESTDIR"
